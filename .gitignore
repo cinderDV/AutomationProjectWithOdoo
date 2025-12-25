@@ -1,0 +1,14 @@
+# No subir archivos de configuración con claves
+*.env
+odoo.conf
+auth_signup/
+sessions/
+
+# No subir archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# No subir datos de volúmenes si los descargas
+/data/
