@@ -17,6 +17,11 @@ services:
           - USER=${USER}
           - PASSWORD=${PASSWORD}
     restart: always
-
+    networks:
+      - coolify
+networks:
+  # Definimos que la red 'coolify' ya existe y no debe crearla de cero
+  coolify:
+    external: true
 volumes:
   odoo-data:
