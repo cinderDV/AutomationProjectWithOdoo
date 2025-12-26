@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  odoo:
+    # Usamos la 18.0 que es la versión estable más reciente (Odoo 19 sigue en desarrollo)
+    image: odoo:18.0
+    container_name: odoo_app
+    ports:
+      - "8069:8069"
+    volumes:
+      # Persistencia de archivos (imágenes, facturas, etc.)
+      - odoo-data:/var/lib/odoo
+      # Mapeo de tus módulos personalizados desde tu repo de GitHub
+      - ./extra-addons:/mnt/extra-addons
+    environment:
+      # Conexión con la base de datos de tu imagen
+      - HOST=postgresql-database-ss448
+      - USER=postgres
+      # IMPORTANTE: Cambia 'tu_password_aqui' por el que sale al darle al ojo en tu imagen
+      - PASSWORD=tu_password_aqui
+      - PORT=5432
+    # Esto asegura que el contenedor intente reconectar si la DB tarda en arrancar
+    restart: always
+
+volumes:
+  odoo-data:
