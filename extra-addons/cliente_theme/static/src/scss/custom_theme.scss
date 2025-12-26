@@ -1,0 +1,193 @@
+// ============================================================================
+// CLIENTE THEME - Custom Variables & Branding
+// Odoo 18.0 Community/Enterprise
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// 1. VARIABLES GLOBALES - Colores Corporativos
+// ----------------------------------------------------------------------------
+// 🎨 Cambia estos valores según la identidad visual de tu cliente
+
+$o-brand-primary: #1E40AF;        // Color principal (azul corporativo)
+$o-brand-secondary: #10B981;      // Color secundario (verde)
+$o-brand-odoo: $o-brand-primary;  // Reemplaza el morado de Odoo
+
+// Colores adicionales
+$o-brand-lighten: lighten($o-brand-primary, 40%);
+$o-brand-darken: darken($o-brand-primary, 15%);
+
+// ----------------------------------------------------------------------------
+// 2. NAVBAR - Barra Superior
+// ----------------------------------------------------------------------------
+
+.o_navbar {
+    background-color: $o-brand-primary !important;
+    border-bottom: 2px solid $o-brand-darken;
+
+    // Logo y nombre de la empresa
+    .o_navbar_apps_menu {
+        .dropdown-toggle {
+            color: white !important;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+            }
+        }
+    }
+
+    // Iconos y menús
+    .o_menu_sections,
+    .o_menu_systray {
+        .dropdown-toggle {
+            color: white !important;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------
+// 3. BOTONES Y ACCIONES
+// ----------------------------------------------------------------------------
+
+.btn-primary {
+    background-color: $o-brand-primary !important;
+    border-color: $o-brand-primary !important;
+
+    &:hover {
+        background-color: $o-brand-darken !important;
+        border-color: $o-brand-darken !important;
+    }
+}
+
+.btn-secondary {
+    background-color: $o-brand-secondary !important;
+    border-color: $o-brand-secondary !important;
+}
+
+// Links
+a {
+    color: $o-brand-primary;
+
+    &:hover {
+        color: $o-brand-darken;
+    }
+}
+
+// ----------------------------------------------------------------------------
+// 4. FORMULARIOS Y VISTAS
+// ----------------------------------------------------------------------------
+
+// Headers de formularios
+.o_form_view {
+    .o_form_statusbar {
+        .o_arrow_button.btn-primary {
+            background-color: $o-brand-primary !important;
+        }
+    }
+}
+
+// Badges y etiquetas
+.badge-primary {
+    background-color: $o-brand-primary !important;
+}
+
+// ----------------------------------------------------------------------------
+// 5. KANBAN CARDS - Tarjetas de Vista Kanban
+// ----------------------------------------------------------------------------
+
+.o_kanban_record {
+    border-left: 3px solid $o-brand-lighten;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-left-color: $o-brand-primary;
+    }
+}
+
+// ----------------------------------------------------------------------------
+// 6. LOGIN SCREEN - Pantalla de Inicio de Sesión
+// ----------------------------------------------------------------------------
+
+.oe_login_form {
+    // Fondo personalizado (descomenta si tienes imagen)
+    // background-image: url('/cliente_theme/static/img/login_background.jpg');
+    // background-size: cover;
+    // background-position: center;
+}
+
+.o_database_list {
+    background: linear-gradient(135deg, $o-brand-primary 0%, $o-brand-darken 100%);
+}
+
+// ----------------------------------------------------------------------------
+// 7. TIPOGRAFÍA PERSONALIZADA (Opcional)
+// ----------------------------------------------------------------------------
+
+// Ejemplo: Usar Google Fonts
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+// body {
+//     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+// }
+
+// ----------------------------------------------------------------------------
+// 8. SIDEBAR - Menú Lateral
+// ----------------------------------------------------------------------------
+
+.o_menu_brand {
+    color: $o-brand-primary !important;
+    font-weight: 600;
+}
+
+// ----------------------------------------------------------------------------
+// 9. TABLAS Y LISTAS
+// ----------------------------------------------------------------------------
+
+.o_list_view {
+    .o_list_table {
+        thead {
+            background-color: $o-brand-lighten;
+
+            th {
+                color: $o-brand-darken;
+                font-weight: 600;
+            }
+        }
+
+        tbody tr:hover {
+            background-color: rgba($o-brand-primary, 0.05);
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------
+// 10. CHATTER - Área de Mensajes y Actividades
+// ----------------------------------------------------------------------------
+
+.o-mail-Chatter {
+    .o-mail-Chatter-topbar {
+        background-color: $o-brand-lighten;
+    }
+}
+
+// ----------------------------------------------------------------------------
+// 11. RESPONSIVE - Ajustes para móvil
+// ----------------------------------------------------------------------------
+
+@media (max-width: 768px) {
+    .o_navbar {
+        padding: 0.5rem;
+    }
+}
+
+// ============================================================================
+// FIN DEL ARCHIVO
+// ============================================================================
+// 💡 TIPS:
+// - Usa el inspector del navegador para encontrar clases específicas
+// - Reinicia Odoo con: odoo -u cliente_theme -d tu_db --stop-after-init
+// - Limpia el caché del navegador (Ctrl+Shift+R) después de actualizar
+// ============================================================================

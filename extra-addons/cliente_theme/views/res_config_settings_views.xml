@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================================================== -->
+    <!-- Panel de Configuración del Tema Personalizado -->
+    <!-- Accesible desde: Ajustes > General Settings > Cliente Theme -->
+    <!-- ================================================================== -->
+
+    <record id="res_config_settings_view_form_inherit_cliente_theme" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.cliente.theme</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Cliente Theme" name="cliente_theme" groups="base.group_system">
+
+                    <!-- ================================================== -->
+                    <!-- SECCIÓN 1: Personalización de Imágenes -->
+                    <!-- ================================================== -->
+                    <block title="Personalización de Imágenes">
+                        <setting string="Logo del Backend" help="Logo que aparece en la barra superior">
+                            <field name="theme_backend_logo" widget="image" class="oe_avatar"/>
+                            <div class="text-muted">
+                                Tamaño recomendado: 200x60 px (PNG transparente)
+                            </div>
+                        </setting>
+
+                        <setting string="Favicon" help="Icono de la pestaña del navegador">
+                            <field name="theme_favicon" widget="image" class="oe_avatar"/>
+                            <div class="text-muted">
+                                Tamaño: 16x16 o 32x32 px (ICO o PNG)
+                            </div>
+                        </setting>
+
+                        <setting string="Fondo de Login" help="Imagen de fondo de la pantalla de login">
+                            <field name="theme_login_background" widget="image"/>
+                            <div class="text-muted">
+                                Tamaño recomendado: 1920x1080 px (JPG o PNG)
+                            </div>
+                        </setting>
+                    </block>
+
+                    <!-- ================================================== -->
+                    <!-- SECCIÓN 2: Personalización de Colores -->
+                    <!-- ================================================== -->
+                    <block title="Personalización de Colores">
+                        <setting string="Color Primario" help="Color principal del tema (navbar, botones)">
+                            <field name="theme_primary_color" widget="color"/>
+                            <div class="text-muted">
+                                Ejemplo: #1E40AF (azul), #EF4444 (rojo), #10B981 (verde)
+                            </div>
+                        </setting>
+
+                        <setting string="Color Secundario" help="Color secundario del tema">
+                            <field name="theme_secondary_color" widget="color"/>
+                            <div class="text-muted">
+                                Usado para botones secundarios y elementos de apoyo
+                            </div>
+                        </setting>
+                    </block>
+
+                    <!-- ================================================== -->
+                    <!-- SECCIÓN 3: Personalización de Textos -->
+                    <!-- ================================================== -->
+                    <block title="Personalización de Textos">
+                        <setting string="Nombre de la Empresa" help="Texto junto al logo en el navbar">
+                            <field name="theme_company_name"/>
+                        </setting>
+
+                        <setting string="Título de la Página" help="Texto en la pestaña del navegador">
+                            <field name="theme_page_title"/>
+                        </setting>
+
+                        <setting string="Título de Login">
+                            <field name="theme_login_title"/>
+                        </setting>
+
+                        <setting string="Subtítulo de Login">
+                            <field name="theme_login_subtitle"/>
+                        </setting>
+
+                        <setting string="Texto del Footer">
+                            <field name="theme_footer_text"/>
+                        </setting>
+                    </block>
+
+                    <!-- ================================================== -->
+                    <!-- NOTA INFORMATIVA -->
+                    <!-- ================================================== -->
+                    <div class="alert alert-info mt-3" role="alert">
+                        <strong>📝 Nota:</strong> Después de guardar los cambios:
+                        <ol>
+                            <li>Limpia el caché del navegador (Ctrl + Shift + R)</li>
+                            <li>Si los cambios no se aplican, reinicia el servidor de Odoo</li>
+                        </ol>
+                    </div>
+
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

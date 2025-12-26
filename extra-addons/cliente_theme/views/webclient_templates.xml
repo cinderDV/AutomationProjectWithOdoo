@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================================================== -->
+    <!-- NIVEL 2: Personalización de Vistas del Backend -->
+    <!-- NOTA: Las imágenes y textos se configuran desde Ajustes > Cliente Theme -->
+    <!-- ================================================================== -->
+
+    <!-- 1. Modificar el NAVBAR - Logo y color personalizados -->
+    <template id="navbar_custom_logo" inherit_id="web.webclient_bootstrap" name="Custom Navbar Logo">
+        <!-- Inyectar color primario dinámicamente -->
+        <xpath expr="//nav[@class='o_navbar']" position="attributes">
+            <attribute name="t-att-style">"background-color: " + (request.env['ir.config_parameter'].sudo().get_param('cliente_theme.primary_color', '#1E40AF')) + " !important;"</attribute>
+        </xpath>
+
+        <!-- Reemplazar el logo del navbar con el configurado -->
+        <xpath expr="//nav[@class='o_navbar']//a[hasclass('o_menu_brand')]" position="replace">
+            <t t-set="logo_data" t-value="request.env['ir.config_parameter'].sudo().get_param('cliente_theme.backend_logo', False)"/>
+            <t t-set="company_name" t-value="request.env['ir.config_parameter'].sudo().get_param('cliente_theme.company_name', 'Mi Empresa')"/>
+
+            <a class="o_menu_brand" href="#" style="display: flex; align-items: center;">
+                <t t-if="logo_data">
+                    <img t-att-src="'data:image/png;base64,' + logo_data"
+                         alt="Logo"
+                         style="height: 40px; margin-right: 10px; object-fit: contain;"/>
+                </t>
+                <span style="color: white; font-weight: 600;">
+                    <t t-esc="company_name"/>
+                </span>
+            </a>
+        </xpath>
+    </template>
+
+    <!-- 2. Modificar el FAVICON -->
+    <template id="custom_favicon" inherit_id="web.layout" name="Custom Favicon">
+        <xpath expr="//link[@rel='shortcut icon']" position="replace">
+            <t t-set="favicon_data" t-value="request.env['ir.config_parameter'].sudo().get_param('cliente_theme.favicon', False)"/>
+            <t t-if="favicon_data">
+                <link rel="shortcut icon" t-att-href="'data:image/x-icon;base64,' + favicon_data" type="image/x-icon"/>
+            </t>
+            <t t-else="">
+                <link rel="shortcut icon" href="/web/static/img/favicon.ico" type="image/x-icon"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- 3. Personalizar el FOOTER del Backend -->
+    <template id="custom_footer" inherit_id="web.webclient_bootstrap" name="Custom Footer">
+        <xpath expr="//footer" position="replace">
+            <t t-set="footer_text" t-value="request.env['ir.config_parameter'].sudo().get_param('cliente_theme.footer_text', '© 2025 Tu Empresa - Powered by Odoo 18.0')"/>
+            <footer class="o_webclient_footer" style="text-align: center; padding: 10px; color: #6c757d; font-size: 12px;">
+                <span t-esc="footer_text"/>
+            </footer>
+        </xpath>
+    </template>
+
+    <!-- 4. Modificar el título de la pestaña del navegador -->
+    <template id="custom_page_title" inherit_id="web.layout" name="Custom Page Title">
+        <xpath expr="//title" position="replace">
+            <t t-set="page_title" t-value="request.env['ir.config_parameter'].sudo().get_param('cliente_theme.page_title', 'Cliente ERP - Odoo')"/>
+            <title t-esc="page_title"/>
+        </xpath>
+    </template>
+
+</odoo>
