@@ -68,7 +68,7 @@
                         </div>                        
                         <button 
                             name="action_reset_theme_color_assets" 
-                            icon="fa-refresh" 
+                            icon="oi-arrow-right" 
                             type="object" 
                             string="Reset Theme Colors" 
                             class="btn-link"

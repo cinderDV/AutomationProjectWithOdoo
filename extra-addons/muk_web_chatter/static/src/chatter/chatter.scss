@@ -6,11 +6,10 @@
     .mk_chatter_resize {
         top: 0;
         bottom: 0;
+        z-index: 1;
         width: 5px;
         height: 100%;
         cursor: col-resize;
         position: absolute;
-        z-index: $o-mail-NavigableList-zIndex + 1;
-        border-left: var(--ControlPanel-border-bottom, 1px solid $o-gray-300);
     }
 }

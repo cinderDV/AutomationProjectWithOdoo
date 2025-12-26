@@ -5,12 +5,12 @@
         This module adds an option to dialogs to expand it to full screen mode.
         Each user can the initial state of the dialogs in their preferences.
     ''',
-    'version': '19.0.1.0.1',
+    'version': '18.0.1.0.5',
     'category': 'Tools/UI',
     'license': 'LGPL-3', 
     'author': 'MuK IT',
     'website': 'http://www.mukit.at',
-    'live_test_url': 'https://youtu.be/QCSJugQC-O4',
+    'live_test_url': 'https://my.mukit.at/r/f6m',
     'contributors': [
         'Mathias Markl <mathias.markl@mukit.at>',
     ],
@@ -21,13 +21,6 @@
         'views/res_users.xml',
     ],
     'assets': {
-        'web._assets_primary_variables': [
-            (
-                'after', 
-                'web/static/src/scss/primary_variables.scss', 
-                'muk_web_dialog/static/src/scss/variables.scss'
-            ),
-        ],
         'web.assets_backend': [
             (
                 'after',

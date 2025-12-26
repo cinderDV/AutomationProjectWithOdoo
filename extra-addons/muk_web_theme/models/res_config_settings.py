@@ -57,7 +57,7 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
     
     def _get_theme_color_values(self):
-        return self.env['muk_web_colors.color_assets_editor'].get_color_variables_values(
+        return self.env['web_editor.assets'].get_color_variables_values(
             self.COLOR_ASSET_THEME_URL, 
             self.COLOR_BUNDLE_THEME_NAME,
             self.THEME_COLOR_FIELDS
@@ -84,14 +84,14 @@ class ResConfigSettings(models.TransientModel):
             }
             for field in self.THEME_COLOR_FIELDS
         ]
-        return self.env['muk_web_colors.color_assets_editor'].replace_color_variables_values(
+        return self.env['web_editor.assets'].replace_color_variables_values(
             self.COLOR_ASSET_THEME_URL, 
             self.COLOR_BUNDLE_THEME_NAME,
             variables
         )
 
     def _reset_theme_color_assets(self):
-        self.env['muk_web_colors.color_assets_editor'].reset_color_asset(
+        self.env['web_editor.assets'].reset_asset(
             self.COLOR_ASSET_THEME_URL, 
             self.COLOR_BUNDLE_THEME_NAME,
         )

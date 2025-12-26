@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 19.0+e\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-26 16:53+0000\n"
-"PO-Revision-Date: 2025-11-26 16:53+0000\n"
+"POT-Creation-Date: 2024-11-06 14:05+0000\n"
+"PO-Revision-Date: 2024-11-06 14:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,7 @@ msgstr "Unten"
 #. module: muk_web_chatter
 #: model:ir.model.fields,field_description:muk_web_chatter.field_res_users__chatter_position
 msgid "Chatter Position"
-msgstr "Chatter-Position"
-
-#. module: muk_web_chatter
-#: model:ir.model.fields,field_description:muk_web_chatter.field_ir_http__display_name
-#: model:ir.model.fields,field_description:muk_web_chatter.field_res_users__display_name
-msgid "Display Name"
-msgstr "Anzeigename"
+msgstr "Chatterposition"
 
 #. module: muk_web_chatter
 #: model:ir.model,name:muk_web_chatter.model_ir_http
@@ -37,28 +31,22 @@ msgid "HTTP Routing"
 msgstr "HTTP-Routing"
 
 #. module: muk_web_chatter
-#: model:ir.model.fields,field_description:muk_web_chatter.field_ir_http__id
-#: model:ir.model.fields,field_description:muk_web_chatter.field_res_users__id
-msgid "ID"
-msgstr "ID"
+#. odoo-javascript
+#: code:addons/muk_web_chatter/static/src/chatter/chatter.xml:0
+msgid "Log note"
+msgstr "Log-Notiz"
 
 #. module: muk_web_chatter
 #. odoo-javascript
 #: code:addons/muk_web_chatter/static/src/chatter/chatter.xml:0
-msgid "Message"
-msgstr "Nachricht"
-
-#. module: muk_web_chatter
-#. odoo-javascript
-#: code:addons/muk_web_chatter/static/src/chatter/chatter.xml:0
-msgid "Note"
-msgstr "Hinweis"
+msgid "Send message"
+msgstr "Nachricht senden"
 
 #. module: muk_web_chatter
 #. odoo-javascript
 #: code:addons/muk_web_chatter/static/src/chatter/chatter.xml:0
 msgid "Show/Hide Notifications"
-msgstr "Benachrichtigungen anzeigen/ausblenden"
+msgstr "Benachrichtigungen ein-/ausblenden"
 
 #. module: muk_web_chatter
 #: model:ir.model.fields.selection,name:muk_web_chatter.selection__res_users__chatter_position__side

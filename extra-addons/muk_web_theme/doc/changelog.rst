@@ -1,13 +1,3 @@
-`1.4.0`
--------
-
-- Add Refresh Module
-
-`1.3.0`
--------
-
-- Add Groups Module
-
 `1.2.0`
 -------
 

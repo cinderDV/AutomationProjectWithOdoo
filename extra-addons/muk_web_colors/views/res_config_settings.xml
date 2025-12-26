@@ -36,7 +36,7 @@
                         </div>
                         <button 
                             name="action_reset_light_color_assets" 
-                            icon="fa-refresh" 
+                            icon="oi-arrow-right" 
                             type="object" 
                             string="Reset Light Colors" 
                             class="btn-link"
@@ -69,7 +69,7 @@
                         </div>
                         <button 
                             name="action_reset_dark_color_assets" 
-                            icon="fa-refresh" 
+                            icon="oi-arrow-right" 
                             type="object" 
                             string="Reset Dark Colors" 
                             class="btn-link"

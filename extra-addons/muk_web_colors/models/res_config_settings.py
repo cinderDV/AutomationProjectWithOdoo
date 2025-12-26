@@ -97,14 +97,14 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
     
     def _get_light_color_values(self):
-        return self.env['muk_web_colors.color_assets_editor'].get_color_variables_values(
+        return self.env['web_editor.assets'].get_color_variables_values(
             self.COLOR_ASSET_LIGHT_URL, 
             self.COLOR_BUNDLE_LIGHT_NAME,
             self.COLOR_FIELDS
         )
         
     def _get_dark_color_values(self):
-        return self.env['muk_web_colors.color_assets_editor'].get_color_variables_values(
+        return self.env['web_editor.assets'].get_color_variables_values(
             self.COLOR_ASSET_DARK_URL, 
             self.COLOR_BUNDLE_DARK_NAME,
             self.COLOR_FIELDS
@@ -144,7 +144,7 @@ class ResConfigSettings(models.TransientModel):
             }
             for field in self.COLOR_FIELDS
         ]
-        return self.env['muk_web_colors.color_assets_editor'].replace_color_variables_values(
+        return self.env['web_editor.assets'].replace_color_variables_values(
             self.COLOR_ASSET_LIGHT_URL, 
             self.COLOR_BUNDLE_LIGHT_NAME,
             variables
@@ -158,20 +158,20 @@ class ResConfigSettings(models.TransientModel):
             }
             for field in self.COLOR_FIELDS
         ]
-        return self.env['muk_web_colors.color_assets_editor'].replace_color_variables_values(
+        return self.env['web_editor.assets'].replace_color_variables_values(
             self.COLOR_ASSET_DARK_URL, 
             self.COLOR_BUNDLE_DARK_NAME,
             variables
         )
     
     def _reset_light_color_assets(self):
-        self.env['muk_web_colors.color_assets_editor'].reset_color_asset(
+        self.env['web_editor.assets'].reset_color_asset(
             self.COLOR_ASSET_LIGHT_URL, 
             self.COLOR_BUNDLE_LIGHT_NAME,
         )
         
     def _reset_dark_color_assets(self):
-        self.env['muk_web_colors.color_assets_editor'].reset_color_asset(
+        self.env['web_editor.assets'].reset_asset(
             self.COLOR_ASSET_DARK_URL, 
             self.COLOR_BUNDLE_DARK_NAME,
         )
