@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.simple.theme</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Simple Theme" name="simple_theme" groups="base.group_system">
+
+                    <block title="Imágenes">
+                        <setting string="Logo del Backend">
+                            <field name="simple_theme_logo" widget="image" class="oe_avatar"/>
+                            <div class="text-muted">200x60 px (PNG transparente)</div>
+                        </setting>
+
+                        <setting string="Favicon">
+                            <field name="simple_theme_favicon" widget="image" class="oe_avatar"/>
+                            <div class="text-muted">16x16 px (ICO o PNG)</div>
+                        </setting>
+
+                        <setting string="Fondo de Login">
+                            <field name="simple_theme_login_bg" widget="image"/>
+                            <div class="text-muted">1920x1080 px (JPG o PNG)</div>
+                        </setting>
+                    </block>
+
+                    <block title="Colores">
+                        <setting string="Color Primario">
+                            <field name="simple_theme_primary" widget="color"/>
+                        </setting>
+
+                        <setting string="Color Secundario">
+                            <field name="simple_theme_secondary" widget="color"/>
+                        </setting>
+                    </block>
+
+                    <block title="Textos">
+                        <setting string="Nombre de Empresa">
+                            <field name="simple_theme_company_name"/>
+                        </setting>
+
+                        <setting string="Título de Página">
+                            <field name="simple_theme_page_title"/>
+                        </setting>
+                    </block>
+
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

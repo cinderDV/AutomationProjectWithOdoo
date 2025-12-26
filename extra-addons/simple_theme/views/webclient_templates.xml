@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Navbar personalizado -->
+    <template id="navbar_custom" inherit_id="web.webclient_bootstrap">
+        <xpath expr="//nav[@class='o_navbar']" position="attributes">
+            <attribute name="t-att-style">"background-color: " + (request.env['ir.config_parameter'].sudo().get_param('simple_theme.primary', '#1E40AF')) + " !important;"</attribute>
+        </xpath>
+
+        <xpath expr="//nav[@class='o_navbar']//a[hasclass('o_menu_brand')]" position="replace">
+            <t t-set="logo" t-value="request.env['ir.config_parameter'].sudo().get_param('simple_theme.logo', False)"/>
+            <t t-set="company" t-value="request.env['ir.config_parameter'].sudo().get_param('simple_theme.company_name', 'Mi Empresa')"/>
+            <a class="o_menu_brand" href="#" style="display: flex; align-items: center;">
+                <t t-if="logo">
+                    <img t-att-src="'data:image/png;base64,' + logo" alt="Logo" style="height: 40px; margin-right: 10px;"/>
+                </t>
+                <span style="color: white; font-weight: 600;" t-esc="company"/>
+            </a>
+        </xpath>
+    </template>
+
+    <!-- Favicon -->
+    <template id="favicon_custom" inherit_id="web.layout">
+        <xpath expr="//link[@rel='shortcut icon']" position="replace">
+            <t t-set="favicon" t-value="request.env['ir.config_parameter'].sudo().get_param('simple_theme.favicon', False)"/>
+            <t t-if="favicon">
+                <link rel="shortcut icon" t-att-href="'data:image/x-icon;base64,' + favicon" type="image/x-icon"/>
+            </t>
+            <t t-else="">
+                <link rel="shortcut icon" href="/web/static/img/favicon.ico" type="image/x-icon"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Título de página -->
+    <template id="page_title_custom" inherit_id="web.layout">
+        <xpath expr="//title" position="replace">
+            <t t-set="title" t-value="request.env['ir.config_parameter'].sudo().get_param('simple_theme.page_title', 'ERP - Odoo')"/>
+            <title t-esc="title"/>
+        </xpath>
+    </template>
+</odoo>
