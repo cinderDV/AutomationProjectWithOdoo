@@ -13,13 +13,9 @@ services:
       # Mapeo de tus módulos personalizados desde tu repo de GitHub
       - ./extra-addons:/mnt/extra-addons
     environment:
-      # Conexión con la base de datos de tu imagen
-      - HOST=postgresql-database-ss448
-      - USER=postgres
-      # IMPORTANTE: Cambia 'tu_password_aqui' por el que sale al darle al ojo en tu imagen
-      - PASSWORD=tu_password_aqui
-      - PORT=5432
-    # Esto asegura que el contenedor intente reconectar si la DB tarda en arrancar
+          - HOST=${HOST}
+          - USER=${USER}
+          - PASSWORD=${PASSWORD}
     restart: always
 
 volumes:
