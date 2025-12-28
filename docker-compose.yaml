@@ -12,6 +12,8 @@ services:
       - odoo-data:/var/lib/odoo
       # Mapeo de tus módulos personalizados desde tu repo de GitHub
       - ./extra-addons:/mnt/extra-addons
+      # Archivo de configuración de Odoo
+      - ./odoo.conf:/etc/odoo/odoo.conf
     environment:
           - HOST=${HOST}
           - USER=${USER}

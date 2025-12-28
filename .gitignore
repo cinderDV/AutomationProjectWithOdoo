@@ -1,6 +1,5 @@
 # No subir archivos de configuración con claves
 *.env
-odoo.conf
 auth_signup/
 sessions/
 
