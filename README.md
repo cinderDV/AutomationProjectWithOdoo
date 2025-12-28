@@ -52,7 +52,12 @@ PASSWORD=tu_password_seguro_aqui
 3. Configura las variables de entorno mencionadas arriba
 4. Despliega el proyecto
 
-**Nota:** El proyecto usa un Dockerfile personalizado que incluye el archivo `odoo.conf`. Coolify construirá automáticamente la imagen durante el despliegue.
+**Nota:** El proyecto usa un Dockerfile personalizado que incluye:
+- El archivo `odoo.conf` con la configuración de rutas de addons
+- Todos los módulos personalizados copiados dentro de la imagen
+- Script de diagnóstico para troubleshooting
+
+Coolify construirá automáticamente la imagen durante el despliegue.
 
 ### 3. Activar los Módulos Personalizados
 
@@ -92,8 +97,10 @@ Para agregar nuevos módulos personalizados:
        └── ... (otros archivos del módulo)
    ```
 3. Haz commit y push al repositorio
-4. Coolify desplegará automáticamente los cambios
-5. Actualiza la lista de aplicaciones en Odoo
+4. Coolify reconstruirá automáticamente la imagen con los nuevos módulos
+5. Una vez desplegado, actualiza la lista de aplicaciones en Odoo
+
+**Nota importante:** Los módulos se copian dentro de la imagen Docker durante el build. Cada vez que agregues o modifiques módulos, necesitarás hacer un nuevo deploy para que Coolify reconstruya la imagen.
 
 ## Troubleshooting
 

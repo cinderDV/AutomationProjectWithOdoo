@@ -12,8 +12,8 @@ services:
     volumes:
       # Persistencia de archivos (imágenes, facturas, etc.)
       - odoo-data:/var/lib/odoo
-      # Mapeo de tus módulos personalizados desde tu repo de GitHub
-      - ./extra-addons:/mnt/extra-addons
+      # Los addons ahora están dentro de la imagen (copiados en el Dockerfile)
+      # No necesitamos montar extra-addons como volumen
     environment:
           - HOST=${HOST}
           - USER=${USER}
