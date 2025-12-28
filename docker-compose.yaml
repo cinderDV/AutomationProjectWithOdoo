@@ -2,8 +2,10 @@ version: '3.8'
 
 services:
   odoo:
-    # Usamos la 18.0 que es la versión estable más reciente (Odoo 19 sigue en desarrollo)
-    image: odoo:18.0
+    # Construir desde Dockerfile personalizado que incluye odoo.conf
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: odoo_app
     ports:
       - "8069:8069"
@@ -12,8 +14,6 @@ services:
       - odoo-data:/var/lib/odoo
       # Mapeo de tus módulos personalizados desde tu repo de GitHub
       - ./extra-addons:/mnt/extra-addons
-      # Archivo de configuración de Odoo
-      - ./odoo.conf:/etc/odoo/odoo.conf
     environment:
           - HOST=${HOST}
           - USER=${USER}

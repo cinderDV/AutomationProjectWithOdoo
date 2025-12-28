@@ -6,6 +6,7 @@ Este proyecto contiene una configuración de Odoo 18 con módulos personalizados
 
 ```
 .
+├── Dockerfile             # Dockerfile personalizado que incluye odoo.conf
 ├── docker-compose.yaml    # Configuración de Docker Compose
 ├── odoo.conf              # Archivo de configuración de Odoo
 ├── .env.example           # Ejemplo de variables de entorno
@@ -35,6 +36,8 @@ PASSWORD=tu_password_seguro_aqui
 2. Selecciona "Docker Compose" como tipo de despliegue
 3. Configura las variables de entorno mencionadas arriba
 4. Despliega el proyecto
+
+**Nota:** El proyecto usa un Dockerfile personalizado que incluye el archivo `odoo.conf`. Coolify construirá automáticamente la imagen durante el despliegue.
 
 ### 3. Activar los Módulos Personalizados
 
