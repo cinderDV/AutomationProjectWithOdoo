@@ -20,17 +20,32 @@ Este proyecto contiene una configuración de Odoo 18 con módulos personalizados
 
 ## Configuración en Coolify
 
-### 1. Variables de Entorno
+### 1. Base de Datos PostgreSQL
+
+Antes de desplegar Odoo, necesitas una base de datos PostgreSQL:
+
+1. En Coolify, crea un nuevo servicio PostgreSQL (si aún no tienes uno)
+2. Anota el nombre del servicio/host, usuario y contraseña
+3. Si creas una base de datos dedicada para Odoo, anota el nombre
+
+**Alternativa:** Odoo puede crear automáticamente la base de datos si le das acceso a PostgreSQL.
+
+### 2. Variables de Entorno
 
 Configura las siguientes variables de entorno en Coolify:
 
 ```env
-HOST=db
+HOST=nombre-del-servicio-postgres
 USER=odoo
 PASSWORD=tu_password_seguro_aqui
 ```
 
-### 2. Despliegue
+**Nota importante:**
+- `HOST` debe ser el nombre del servicio de PostgreSQL en Coolify (o la IP si es externa)
+- `USER` y `PASSWORD` son las credenciales de PostgreSQL
+- Opcionalmente puedes agregar `DB_NAME` si quieres especificar la base de datos
+
+### 3. Despliegue
 
 1. Conecta tu repositorio Git en Coolify
 2. Selecciona "Docker Compose" como tipo de despliegue
@@ -84,14 +99,55 @@ Para agregar nuevos módulos personalizados:
 
 ### Los módulos no aparecen en Odoo
 
-1. Verifica que el archivo `odoo.conf` esté correctamente montado
-2. Asegúrate de que los módulos estén directamente en `extra-addons/`, no en subdirectorios
-3. Verifica los logs del contenedor: `docker logs odoo_app`
-4. Actualiza la lista de aplicaciones en modo desarrollador
+Si los módulos no aparecen en la lista de aplicaciones, sigue estos pasos:
+
+1. **Ejecuta el script de diagnóstico en Coolify:**
+   - Ve a tu aplicación en Coolify
+   - Abre el terminal del contenedor (Console)
+   - Ejecuta: `bash /diagnostic.sh` (si está disponible) o revisa manualmente:
+
+2. **Verifica que los módulos estén montados:**
+   ```bash
+   ls -la /mnt/extra-addons/
+   ```
+   Deberías ver: `muk_web_theme`, `muk_web_appsbar`, `muk_web_chatter`, `muk_web_colors`, `muk_web_dialog`
+
+3. **Verifica el archivo de configuración:**
+   ```bash
+   cat /etc/odoo/odoo.conf
+   ```
+   Debe contener: `addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons`
+
+4. **Revisa los logs del contenedor en Coolify:**
+   - Ve a Logs en tu aplicación
+   - Busca errores relacionados con "addons_path" o "extra-addons"
+   - Verifica que no haya errores de permisos
+
+5. **Si todo está correcto pero aún no aparecen:**
+   - En Odoo, activa el Modo Desarrollador
+   - Ve a Aplicaciones → Menú de tres puntos → Actualizar lista de aplicaciones
+   - Busca "muk" en la barra de búsqueda
+   - Si aún no aparecen, puede haber un error en los archivos `__manifest__.py` de los módulos
+
+6. **Ejecutar diagnóstico manual:**
+   Desde el terminal del contenedor en Coolify:
+   ```bash
+   find /mnt/extra-addons/ -name "__manifest__.py"
+   ```
+   Deberías ver 5 archivos `__manifest__.py` (uno por cada módulo)
 
 ### Error de permisos
 
-Si hay errores de permisos, verifica que el contenedor tenga acceso de lectura a los archivos en `extra-addons/`.
+Si hay errores de permisos:
+- Verifica en Coolify que el volumen `./extra-addons` se está montando correctamente
+- Los permisos de los archivos deben permitir lectura al usuario `odoo` dentro del contenedor
+
+### Base de datos no conecta
+
+Si Odoo no puede conectarse a la base de datos:
+- Verifica que las variables de entorno `HOST`, `USER`, y `PASSWORD` estén configuradas en Coolify
+- El `HOST` debería ser el nombre del servicio de PostgreSQL
+- Si usas una base de datos externa, asegúrate de que sea accesible desde el contenedor
 
 ## Documentación Adicional
 
