@@ -5,13 +5,17 @@
         <field name="model">stock.scrap</field>
         <field name="inherit_id" ref="stock.stock_scrap_form_view2"/>
         <field name="arch" type="xml">
-            <!-- Agregar grupo de análisis de incidente -->
-            <xpath expr="//group[@name='product_group']" position="after">
-                <group name="incident_analysis" string="Análisis del Incidente">
-                    <field name="x_incident_type"/>
-                    <field name="x_area_occurrence"/>
-                    <field name="x_action_taken"/>
-                    <field name="x_economic_impact" widget="monetary"/>
+            <!-- Agregar grupo de análisis de incidente después del producto -->
+            <xpath expr="//field[@name='product_id']" position="after">
+                <group name="incident_analysis" string="Análisis del Incidente" colspan="2">
+                    <group>
+                        <field name="x_incident_type"/>
+                        <field name="x_area_occurrence"/>
+                    </group>
+                    <group>
+                        <field name="x_action_taken"/>
+                        <field name="x_economic_impact" widget="monetary"/>
+                    </group>
                 </group>
             </xpath>
         </field>

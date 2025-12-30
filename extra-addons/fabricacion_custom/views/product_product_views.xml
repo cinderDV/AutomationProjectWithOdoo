@@ -5,8 +5,8 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <!-- Agregar después del campo default_code (SKU interno) -->
-            <xpath expr="//field[@name='default_code']" position="after">
+            <!-- Agregar después del campo barcode (código de barras) -->
+            <xpath expr="//field[@name='barcode']" position="after">
                 <field name="x_sku_falabella" placeholder="FAL-XXXX-XXXX"/>
                 <field name="x_sku_ripley" placeholder="RIP-XXXX-XXXX"/>
                 <field name="x_sku_paris" placeholder="PAR-XXXX-XXXX"/>
@@ -20,7 +20,7 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_product_tree_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='default_code']" position="after">
+            <xpath expr="//field[@name='barcode']" position="after">
                 <field name="x_sku_falabella" optional="hide"/>
                 <field name="x_sku_ripley" optional="hide"/>
                 <field name="x_sku_paris" optional="hide"/>
