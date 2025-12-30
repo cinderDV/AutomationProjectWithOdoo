@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <!-- Agregar en el grupo de Sales dentro de la pestaña Sales & Purchase -->
             <xpath expr="//page[@name='sales_purchases']//group[@name='sale']" position="inside">
-                <field name="x_sales_channel" widget="badge" placeholder="Seleccione canal de venta"/>
+                <field name="x_sales_channel" placeholder="Seleccione canal de venta"/>
             </xpath>
         </field>
     </record>
