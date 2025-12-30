@@ -5,9 +5,9 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <!-- Agregar después del campo user_id (vendedor) -->
-            <xpath expr="//field[@name='user_id']" position="after">
-                <field name="x_sales_channel" widget="badge"/>
+            <!-- Agregar después del campo name (nombre del contacto) -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="x_sales_channel" widget="badge" placeholder="Seleccione canal de venta"/>
             </xpath>
         </field>
     </record>
@@ -18,7 +18,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='email']" position="after">
+            <xpath expr="//tree" position="inside">
                 <field name="x_sales_channel" optional="show"/>
             </xpath>
         </field>

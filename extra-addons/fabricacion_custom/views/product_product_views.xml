@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_product_form_inherit_marketplace_skus" model="ir.ui.view">
-        <field name="name">product.product.form.inherit.marketplace.skus</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_normal_form_view"/>
+    <record id="view_product_template_form_inherit_marketplace_skus" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.marketplace.skus</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
-            <!-- Agregar después del campo barcode (código de barras) -->
-            <xpath expr="//field[@name='barcode']" position="after">
-                <field name="x_sku_falabella" placeholder="FAL-XXXX-XXXX"/>
-                <field name="x_sku_ripley" placeholder="RIP-XXXX-XXXX"/>
-                <field name="x_sku_paris" placeholder="PAR-XXXX-XXXX"/>
+            <!-- Agregar grupo dentro de la página de información general -->
+            <xpath expr="//page[@name='general_information']" position="inside">
+                <group string="SKUs de Marketplaces" name="marketplace_skus">
+                    <field name="x_sku_falabella" placeholder="FAL-XXXX-XXXX"/>
+                    <field name="x_sku_ripley" placeholder="RIP-XXXX-XXXX"/>
+                    <field name="x_sku_paris" placeholder="PAR-XXXX-XXXX"/>
+                </group>
             </xpath>
         </field>
     </record>
 
     <!-- Agregar campos a la vista de lista también -->
-    <record id="view_product_tree_inherit_marketplace_skus" model="ir.ui.view">
-        <field name="name">product.product.tree.inherit.marketplace.skus</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_product_tree_view"/>
+    <record id="view_product_template_tree_inherit_marketplace_skus" model="ir.ui.view">
+        <field name="name">product.template.tree.inherit.marketplace.skus</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='barcode']" position="after">
+            <xpath expr="//tree" position="inside">
                 <field name="x_sku_falabella" optional="hide"/>
                 <field name="x_sku_ripley" optional="hide"/>
                 <field name="x_sku_paris" optional="hide"/>

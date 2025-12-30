@@ -5,21 +5,20 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <!-- Agregar grupo de seguimiento de retrasos después de commitment_date -->
-            <xpath expr="//field[@name='commitment_date']" position="after">
-                <group name="delay_tracking" string="Seguimiento de Retrasos" colspan="2">
+            <!-- Agregar nueva página para seguimiento de retrasos -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Seguimiento de Retrasos" name="delay_tracking">
                     <group>
-                        <field name="x_external_order_id"/>
-                        <field name="x_delay_status" widget="badge"
-                               decoration-success="x_delay_status == 'on_time'"
-                               decoration-warning="x_delay_status == 'delayed_1_3'"
-                               decoration-danger="x_delay_status == 'delayed_3_plus'"/>
+                        <group>
+                            <field name="x_external_order_id"/>
+                            <field name="x_delay_days"/>
+                        </group>
+                        <group>
+                            <field name="x_delay_status" widget="badge"/>
+                            <field name="x_stuck_area"/>
+                        </group>
                     </group>
-                    <group>
-                        <field name="x_delay_days"/>
-                        <field name="x_stuck_area"/>
-                    </group>
-                </group>
+                </page>
             </xpath>
         </field>
     </record>
@@ -30,13 +29,14 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total']" position="after">
+            <xpath expr="//tree" position="inside">
                 <field name="x_delay_status"
                        decoration-success="x_delay_status == 'on_time'"
                        decoration-warning="x_delay_status == 'delayed_1_3'"
                        decoration-danger="x_delay_status == 'delayed_3_plus'"
                        optional="show"/>
                 <field name="x_delay_days" optional="hide"/>
+                <field name="x_external_order_id" optional="hide"/>
             </xpath>
         </field>
     </record>

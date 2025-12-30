@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 
-class ProductProduct(models.Model):
-    _inherit = 'product.product'
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
 
     x_sku_falabella = fields.Char(
         string='SKU Falabella',
