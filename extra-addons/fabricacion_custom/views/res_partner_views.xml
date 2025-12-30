@@ -5,8 +5,8 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <!-- Agregar después del campo name (nombre del contacto) -->
-            <xpath expr="//field[@name='name']" position="after">
+            <!-- Agregar en el grupo de Sales dentro de la pestaña Sales & Purchase -->
+            <xpath expr="//page[@name='sales_purchases']//group[@name='sale']" position="inside">
                 <field name="x_sales_channel" widget="badge" placeholder="Seleccione canal de venta"/>
             </xpath>
         </field>
