@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <!-- Agregar campos de gestión de devolución después del campo origin -->
             <xpath expr="//field[@name='origin']" position="after">
-                <field name="x_return_process" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
-                <field name="x_responsible_worker_id" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                <field name="x_return_process" invisible="picking_type_code != 'incoming'"/>
+                <field name="x_responsible_worker_id" invisible="picking_type_code != 'incoming'"/>
             </xpath>
         </field>
     </record>
