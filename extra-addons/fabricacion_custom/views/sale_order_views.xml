@@ -22,22 +22,4 @@
             </xpath>
         </field>
     </record>
-
-    <!-- Vista de lista con indicadores visuales -->
-    <record id="view_sale_order_tree_inherit_delay_tracking" model="ir.ui.view">
-        <field name="name">sale.order.tree.inherit.delay.tracking</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//tree" position="inside">
-                <field name="x_delay_status"
-                       decoration-success="x_delay_status == 'on_time'"
-                       decoration-warning="x_delay_status == 'delayed_1_3'"
-                       decoration-danger="x_delay_status == 'delayed_3_plus'"
-                       optional="show"/>
-                <field name="x_delay_days" optional="hide"/>
-                <field name="x_external_order_id" optional="hide"/>
-            </xpath>
-        </field>
-    </record>
 </odoo>

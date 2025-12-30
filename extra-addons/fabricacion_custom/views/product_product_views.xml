@@ -15,18 +15,4 @@
             </xpath>
         </field>
     </record>
-
-    <!-- Agregar campos a la vista de lista también -->
-    <record id="view_product_template_tree_inherit_marketplace_skus" model="ir.ui.view">
-        <field name="name">product.template.tree.inherit.marketplace.skus</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_tree_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//tree" position="inside">
-                <field name="x_sku_falabella" optional="hide"/>
-                <field name="x_sku_ripley" optional="hide"/>
-                <field name="x_sku_paris" optional="hide"/>
-            </xpath>
-        </field>
-    </record>
 </odoo>

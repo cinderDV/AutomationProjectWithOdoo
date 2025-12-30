@@ -20,19 +20,4 @@
             </xpath>
         </field>
     </record>
-
-    <!-- Vista de lista -->
-    <record id="view_stock_scrap_tree_inherit_incident_tracking" model="ir.ui.view">
-        <field name="name">stock.scrap.tree.inherit.incident.tracking</field>
-        <field name="model">stock.scrap</field>
-        <field name="inherit_id" ref="stock.stock_scrap_tree_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//tree" position="inside">
-                <field name="x_incident_type" optional="show"/>
-                <field name="x_economic_impact" optional="show"/>
-                <field name="x_action_taken" optional="hide"/>
-                <field name="x_area_occurrence" optional="hide"/>
-            </xpath>
-        </field>
-    </record>
 </odoo>
