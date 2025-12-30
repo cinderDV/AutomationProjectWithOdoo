@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_product_template_custom,product.template.custom,product.model_product_template,base.group_user,1,1,1,1
+access_product_product_custom,product.product.custom,product.model_product_product,base.group_user,1,1,1,1
 access_res_partner_custom,res.partner.custom,base.model_res_partner,base.group_user,1,1,1,1
 access_sale_order_custom,sale.order.custom,sale.model_sale_order,base.group_user,1,1,1,1
 access_stock_scrap_custom,stock.scrap.custom,stock.model_stock_scrap,base.group_user,1,1,1,1
