@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_form_inherit_return_management" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.return.management</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar campos solo en devoluciones -->
+            <xpath expr="//group[@name='other_infos']" position="after">
+                <group name="return_management" string="Gestión de Devolución"
+                       attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}">
+                    <field name="x_return_process"/>
+                    <field name="x_responsible_worker_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

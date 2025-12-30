@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_form_inherit_marketplace_skus" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.marketplace.skus</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Agregar después del campo default_code (SKU interno) -->
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="x_sku_falabella" placeholder="FAL-XXXX-XXXX"/>
+                <field name="x_sku_ripley" placeholder="RIP-XXXX-XXXX"/>
+                <field name="x_sku_paris" placeholder="PAR-XXXX-XXXX"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Agregar campos a la vista de lista también -->
+    <record id="view_product_tree_inherit_marketplace_skus" model="ir.ui.view">
+        <field name="name">product.product.tree.inherit.marketplace.skus</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="x_sku_falabella" optional="hide"/>
+                <field name="x_sku_ripley" optional="hide"/>
+                <field name="x_sku_paris" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

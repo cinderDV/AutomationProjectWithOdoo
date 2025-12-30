@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_scrap_form_inherit_incident_tracking" model="ir.ui.view">
+        <field name="name">stock.scrap.form.inherit.incident.tracking</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view2"/>
+        <field name="arch" type="xml">
+            <!-- Agregar grupo de análisis de incidente -->
+            <xpath expr="//group[@name='product_group']" position="after">
+                <group name="incident_analysis" string="Análisis del Incidente">
+                    <field name="x_incident_type"/>
+                    <field name="x_area_occurrence"/>
+                    <field name="x_action_taken"/>
+                    <field name="x_economic_impact" widget="monetary"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vista de lista -->
+    <record id="view_stock_scrap_tree_inherit_incident_tracking" model="ir.ui.view">
+        <field name="name">stock.scrap.tree.inherit.incident.tracking</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scrap_qty']" position="after">
+                <field name="x_incident_type" optional="show"/>
+                <field name="x_economic_impact" optional="show" widget="monetary"/>
+                <field name="x_action_taken" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
