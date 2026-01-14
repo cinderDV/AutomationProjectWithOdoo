@@ -2,8 +2,8 @@
 <odoo>
     <!-- Override Login Page -->
     <template id="login_custom_branding" inherit_id="web.login" name="Custom Branding Login">
-        <!-- Add custom CSS with configured colors -->
-        <xpath expr="//head" position="inside">
+        <!-- Add custom CSS with configured colors directly in the template body -->
+        <xpath expr="//form" position="before">
             <style>
                 :root {
                     --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
@@ -55,7 +55,7 @@
     <!-- Override Database Selector -->
     <template id="database_selector_custom_branding" inherit_id="web.database_selector" name="Custom Branding DB Selector">
         <!-- Add custom CSS -->
-        <xpath expr="//head" position="inside">
+        <xpath expr="//div[contains(@class, 'o_database_list')]" position="before">
             <style>
                 :root {
                     --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
@@ -97,7 +97,7 @@
     <!-- Override Database Manager -->
     <template id="database_manager_custom_branding" inherit_id="web.database_manager" name="Custom Branding DB Manager">
         <!-- Add custom CSS -->
-        <xpath expr="//head" position="inside">
+        <xpath expr="//form" position="before">
             <style>
                 :root {
                     --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
