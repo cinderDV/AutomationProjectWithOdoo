@@ -7,14 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
                 <app string="Branding Personalizado" name="custom_branding">
-                    <block title="Logo y Marca">
-                        <setting>
-                            <label for="custom_logo" string="Logo Personalizado"/>
-                            <div class="text-muted">
-                                Sube tu logo (recomendado: PNG transparente, 200x50px)
-                            </div>
-                            <field name="custom_logo" widget="image" class="oe_avatar"/>
-                        </setting>
+                    <block title="Marca">
                         <setting>
                             <label for="custom_company_name" string="Nombre de Empresa"/>
                             <div class="text-muted">

@@ -7,13 +7,14 @@ class CustomBrandingController(http.Controller):
 
     @http.route('/custom_branding/logo', type='http', auth='public')
     def custom_logo(self, **kwargs):
-        """Sirve el logo personalizado desde la configuración"""
-        logo_data = request.env['ir.config_parameter'].sudo().get_param('custom_branding.logo')
+        """Sirve el logo desde la configuración de la compañía principal"""
+        try:
+            # Obtener el logo de la compañía principal
+            company = request.env['res.company'].sudo().search([], limit=1)
 
-        if logo_data:
-            # Decodificar el logo de base64
-            try:
-                logo_bytes = base64.b64decode(logo_data)
+            if company and company.logo:
+                # El logo ya está en base64
+                logo_bytes = base64.b64decode(company.logo)
                 return request.make_response(
                     logo_bytes,
                     headers=[
@@ -21,10 +22,10 @@ class CustomBrandingController(http.Controller):
                         ('Cache-Control', 'public, max-age=3600'),
                     ]
                 )
-            except Exception:
-                pass
+        except Exception:
+            pass
 
-        # Si no hay logo personalizado, devolver imagen transparente
+        # Si no hay logo, devolver imagen transparente
         transparent_png = base64.b64decode(
             'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
         )
