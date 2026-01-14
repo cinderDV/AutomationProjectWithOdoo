@@ -33,10 +33,8 @@
                     color: var(--custom-primary-color) !important;
                 }
 
-                /* Reemplazar logo de Odoo con logo personalizado */
-                .o_database_list img[alt="Logo"],
-                .card img[alt="Logo"] {
-                    content: url('/custom_branding/logo');
+                /* Limitar tamaño del logo */
+                img[alt="Logo"] {
                     max-height: 80px !important;
                     max-width: 200px !important;
                     width: auto !important;
@@ -49,6 +47,16 @@
                     display: none !important;
                 }
             </style>
+
+            <script type="text/javascript">
+                // Reemplazar logo cuando se cargue la página
+                document.addEventListener('DOMContentLoaded', function() {
+                    var logos = document.querySelectorAll('img[alt="Logo"]');
+                    logos.forEach(function(logo) {
+                        logo.src = '/custom_branding/logo';
+                    });
+                });
+            </script>
         </xpath>
     </template>
 
