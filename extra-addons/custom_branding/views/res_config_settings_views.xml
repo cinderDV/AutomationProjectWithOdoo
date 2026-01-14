@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_custom_branding" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.custom.branding</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Branding Personalizado" name="custom_branding">
+                    <block title="Logo y Marca">
+                        <setting>
+                            <label for="custom_logo" string="Logo Personalizado"/>
+                            <div class="text-muted">
+                                Sube tu logo (recomendado: PNG transparente, 200x50px)
+                            </div>
+                            <field name="custom_logo" widget="image" class="oe_avatar"/>
+                        </setting>
+                        <setting>
+                            <label for="custom_company_name" string="Nombre de Empresa"/>
+                            <div class="text-muted">
+                                Este nombre aparecerá en lugar de "Odoo"
+                            </div>
+                            <field name="custom_company_name" placeholder="Mi Empresa"/>
+                        </setting>
+                    </block>
+
+                    <block title="Colores Personalizados">
+                        <setting help="Formato hexadecimal: #RRGGBB (ejemplo: #1E88E5)">
+                            <label for="custom_primary_color" string="Color Primario"/>
+                            <div class="text-muted">
+                                Color principal de botones y elementos destacados
+                            </div>
+                            <field name="custom_primary_color" placeholder="#1E88E5"
+                                   widget="color"/>
+                        </setting>
+                        <setting>
+                            <label for="custom_secondary_color" string="Color Secundario"/>
+                            <div class="text-muted">
+                                Color para elementos secundarios
+                            </div>
+                            <field name="custom_secondary_color" placeholder="#424242"
+                                   widget="color"/>
+                        </setting>
+                        <setting>
+                            <label for="custom_background_color" string="Color de Fondo"/>
+                            <div class="text-muted">
+                                Color de fondo de la pantalla de login
+                            </div>
+                            <field name="custom_background_color" placeholder="#F5F5F5"
+                                   widget="color"/>
+                        </setting>
+                        <setting>
+                            <label for="custom_text_color" string="Color de Texto"/>
+                            <div class="text-muted">
+                                Color del texto principal
+                            </div>
+                            <field name="custom_text_color" placeholder="#333333"
+                                   widget="color"/>
+                        </setting>
+                    </block>
+
+                    <block title="Vista Previa">
+                        <div class="alert alert-info">
+                            <strong>Nota:</strong> Los cambios se aplicarán después de guardar y recargar la página.
+                            Para ver los cambios en login/selector de BD, cierra sesión.
+                        </div>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,34 @@
+/* Custom Branding CSS */
+
+/* Ocultar referencias a Odoo */
+.o_login_powered_by,
+.o_footer_powered_by,
+[href*="odoo.com"] {
+    display: none !important;
+}
+
+/* Estilos generales para login y selector de BD */
+.o_database_list {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.o_login_form {
+    max-width: 400px;
+}
+
+/* Mejorar visualización del logo */
+.o_database_list img,
+.o_login img {
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Responsive logo */
+@media (max-width: 768px) {
+    .o_database_list img,
+    .o_login img {
+        max-width: 150px !important;
+        max-height: 40px !important;
+    }
+}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Override Login Page -->
+    <template id="login_custom_branding" inherit_id="web.login" name="Custom Branding Login">
+        <!-- Replace Odoo logo with custom logo -->
+        <xpath expr="//img[@src='/web/static/img/logo2.png']" position="replace">
+            <img t-attf-src="/web/image?model=ir.config_parameter&amp;field=value&amp;id=custom_branding.logo"
+                 alt="Logo"
+                 style="max-height: 50px; max-width: 200px;"/>
+        </xpath>
+
+        <!-- Add custom CSS with configured colors -->
+        <xpath expr="//head" position="inside">
+            <style>
+                :root {
+                    --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
+                    --custom-secondary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.secondary_color', '#424242')"/>;
+                    --custom-background-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.background_color', '#F5F5F5')"/>;
+                    --custom-text-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.text_color', '#333333')"/>;
+                }
+
+                body {
+                    background-color: var(--custom-background-color) !important;
+                }
+
+                .btn-primary {
+                    background-color: var(--custom-primary-color) !important;
+                    border-color: var(--custom-primary-color) !important;
+                }
+
+                .btn-primary:hover {
+                    opacity: 0.9;
+                }
+
+                a {
+                    color: var(--custom-primary-color) !important;
+                }
+
+                .text-primary {
+                    color: var(--custom-primary-color) !important;
+                }
+
+                /* Ocultar "Powered by Odoo" */
+                .o_login_powered_by {
+                    display: none !important;
+                }
+            </style>
+        </xpath>
+    </template>
+
+    <!-- Override Database Selector -->
+    <template id="database_selector_custom_branding" inherit_id="web.database_selector" name="Custom Branding DB Selector">
+        <!-- Replace Odoo logo with custom logo -->
+        <xpath expr="//img[@alt='Logo']" position="replace">
+            <img t-attf-src="/web/image?model=ir.config_parameter&amp;field=value&amp;id=custom_branding.logo"
+                 alt="Logo"
+                 style="max-height: 50px; max-width: 200px;"/>
+        </xpath>
+
+        <!-- Add custom CSS -->
+        <xpath expr="//head" position="inside">
+            <style>
+                :root {
+                    --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
+                    --custom-background-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.background_color', '#F5F5F5')"/>;
+                }
+
+                body {
+                    background-color: var(--custom-background-color) !important;
+                }
+
+                .btn-primary {
+                    background-color: var(--custom-primary-color) !important;
+                    border-color: var(--custom-primary-color) !important;
+                }
+
+                .list-group-item.active {
+                    background-color: var(--custom-primary-color) !important;
+                    border-color: var(--custom-primary-color) !important;
+                }
+            </style>
+        </xpath>
+    </template>
+
+    <!-- Override Database Manager -->
+    <template id="database_manager_custom_branding" inherit_id="web.database_manager" name="Custom Branding DB Manager">
+        <!-- Replace Odoo logo with custom logo -->
+        <xpath expr="//img[@alt='Logo']" position="replace">
+            <img t-attf-src="/web/image?model=ir.config_parameter&amp;field=value&amp;id=custom_branding.logo"
+                 alt="Logo"
+                 style="max-height: 50px; max-width: 200px;"/>
+        </xpath>
+
+        <!-- Add custom CSS -->
+        <xpath expr="//head" position="inside">
+            <style>
+                :root {
+                    --custom-primary-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.primary_color', '#1E88E5')"/>;
+                    --custom-background-color: <t t-esc="request.env['ir.config_parameter'].sudo().get_param('custom_branding.background_color', '#F5F5F5')"/>;
+                }
+
+                body {
+                    background-color: var(--custom-background-color) !important;
+                }
+
+                .btn-primary {
+                    background-color: var(--custom-primary-color) !important;
+                    border-color: var(--custom-primary-color) !important;
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>
