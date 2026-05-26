@@ -1,5 +1,10 @@
 FROM odoo:18.0
 
+# Parche para fix bug OrderedDict cron thread
+USER root
+RUN sed -i 's/for db_name, registry in registries.d.items():/for db_name, registry in list(registries.d.items()):/' /usr/lib/python3/dist-packages/odoo/service/server.py
+USER odoo
+
 # Copiar los addons personalizados directamente en la imagen
 COPY --chown=odoo:odoo extra-addons /mnt/extra-addons
 
